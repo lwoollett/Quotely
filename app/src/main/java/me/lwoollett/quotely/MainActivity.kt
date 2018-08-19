@@ -9,6 +9,7 @@ import android.widget.TextView
 
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.jakewharton.threetenabp.AndroidThreeTen
 import me.lwoollett.quotely.model.Prefs
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     var prefs: Prefs? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidThreeTen.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
