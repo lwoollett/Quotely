@@ -30,8 +30,10 @@ class MainActivity : AppCompatActivity() {
             doAsync {
                 val q = getAPI(prefs!!)
                 uiThread {
-                    var textv = findViewById<TextView>(R.id.dada)
-                    textv.text = q?.contents!!.quotes[0].quote
+                    var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                    var txt_author = findViewById<TextView>(R.id.txt_author)
+                    txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                    txt_qoute.text = q?.contents!!.quotes[0].quote
                 }
             }
         }else{
@@ -44,8 +46,10 @@ class MainActivity : AppCompatActivity() {
             if(lastDate.isBefore(LocalDate.now())){
                 getAPI(prefs!!)
             }else{
-                var textv = findViewById<TextView>(R.id.dada)
-                textv.text = q?.contents!!.quotes[0].quote
+                var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                var txt_author = findViewById<TextView>(R.id.txt_author)
+                txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                txt_qoute.text = q?.contents!!.quotes[0].quote
                 }
             }
         }
