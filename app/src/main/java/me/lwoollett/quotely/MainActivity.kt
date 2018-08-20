@@ -44,7 +44,15 @@ class MainActivity : AppCompatActivity() {
             Log.d("Time", lastDateStr)
             Log.d("Time", LocalDate.now().toString())
             if(lastDate.isBefore(LocalDate.now())){
-                getAPI(prefs!!)
+                doAsync {
+                    val q = getAPI(prefs!!)
+                    uiThread {
+                        var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                        var txt_author = findViewById<TextView>(R.id.txt_author)
+                        txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                        txt_qoute.text = q?.contents!!.quotes[0].quote
+                    }
+                }
             }else{
                 var txt_qoute = findViewById<TextView>(R.id.txt_quote)
                 var txt_author = findViewById<TextView>(R.id.txt_author)
