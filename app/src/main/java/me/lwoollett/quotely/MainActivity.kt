@@ -9,6 +9,7 @@ import android.widget.TextView
 
 import com.google.gson.Gson
 import com.google.gson.JsonParser
+import com.jakewharton.threetenabp.AndroidThreeTen
 import me.lwoollett.quotely.model.Prefs
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     var prefs: Prefs? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidThreeTen.init(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -28,8 +30,10 @@ class MainActivity : AppCompatActivity() {
             doAsync {
                 val q = getAPI(prefs!!)
                 uiThread {
-                    var textv = findViewById<TextView>(R.id.dada)
-                    textv.text = q?.contents!!.quotes[0].quote
+                    var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                    var txt_author = findViewById<TextView>(R.id.txt_author)
+                    txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                    txt_qoute.text = q?.contents!!.quotes[0].quote
                 }
             }
         }else{
@@ -40,10 +44,20 @@ class MainActivity : AppCompatActivity() {
             Log.d("Time", lastDateStr)
             Log.d("Time", LocalDate.now().toString())
             if(lastDate.isBefore(LocalDate.now())){
-                getAPI(prefs!!)
+                doAsync {
+                    val q = getAPI(prefs!!)
+                    uiThread {
+                        var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                        var txt_author = findViewById<TextView>(R.id.txt_author)
+                        txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                        txt_qoute.text = q?.contents!!.quotes[0].quote
+                    }
+                }
             }else{
-                var textv = findViewById<TextView>(R.id.dada)
-                textv.text = q?.contents!!.quotes[0].quote
+                var txt_qoute = findViewById<TextView>(R.id.txt_quote)
+                var txt_author = findViewById<TextView>(R.id.txt_author)
+                txt_author.text = """Author: ${q?.contents!!.quotes[0].author}"""
+                txt_qoute.text = q?.contents!!.quotes[0].quote
                 }
             }
         }

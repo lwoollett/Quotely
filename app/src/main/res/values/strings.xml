@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Quotely</string>
+    <string name="TextViewPlaceholder">Placeholder</string>
+    <string name="Placeholder_Author">~Author: Placeholder Author</string>
 </resources>
