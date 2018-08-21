@@ -1,6 +1,7 @@
 package me.lwoollett.quotely
 
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import me.lwoollett.quotely.model.ApiQuote
@@ -19,8 +20,8 @@ fun getAPI(prefs: Prefs): ApiQuote? {
     val root = jp.parse(json)
     Log.d("Async", "File Parsed")
 
-    val q = gson.fromJson<ApiQuote>(root, ApiQuote::class.java!!)
+    val result = gson.fromJson<ApiQuote>(root, ApiQuote::class.java!!)
 
     Log.d("Async", "Converted")
-    return q
+    return result
 }
