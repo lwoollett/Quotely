@@ -31,25 +31,25 @@ class MainActivity : AppCompatActivity() {
         txt_quote = findViewById<TextView>(R.id.txt_quote)
         txt_author = findViewById<TextView>(R.id.txt_author)
         txt_quote!!.setOnClickListener {
-            if(txt_quote!!.typeface == Typeface.create("cursive", Typeface.BOLD)){
+            if (txt_quote!!.typeface == Typeface.create("cursive", Typeface.BOLD)) {
                 txt_quote!!.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD_ITALIC)
                 txt_author!!.setTypeface(Typeface.SANS_SERIF, Typeface.ITALIC)
                 txt_quote!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
                 txt_author!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18.0F)
-            }else{
+            } else {
                 txt_quote!!.typeface = Typeface.create("cursive", Typeface.BOLD)
                 txt_author!!.typeface = Typeface.create("cursive", Typeface.ITALIC)
                 txt_quote!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 38.0F)
                 txt_author!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
             }
         }
-        txt_author!!.setOnClickListener{
-            if(txt_quote!!.typeface == Typeface.create("cursive", Typeface.BOLD)){
+        txt_author!!.setOnClickListener {
+            if (txt_quote!!.typeface == Typeface.create("cursive", Typeface.BOLD)) {
                 txt_quote!!.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD_ITALIC)
                 txt_author!!.setTypeface(Typeface.SANS_SERIF, Typeface.ITALIC)
                 txt_quote!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22.0F)
                 txt_author!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18.0F)
-            }else{
+            } else {
                 txt_quote!!.typeface = Typeface.create("cursive", Typeface.BOLD)
                 txt_author!!.typeface = Typeface.create("cursive", Typeface.ITALIC)
                 txt_quote!!.setTextSize(TypedValue.COMPLEX_UNIT_SP, 38.0F)

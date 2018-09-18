@@ -26,6 +26,7 @@ fun getAPI(prefs: Prefs): ApiQuote? {
     Log.d("Async", "Converted")
     return result
 }
+
 fun urlReader(urlString: String): String? {
     var reader: BufferedReader? = null
     try {
